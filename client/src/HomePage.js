@@ -19,7 +19,6 @@ const Header = styled('div')`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	padding: 20px;
 `
 
 const SearchBar = styled('div')`
@@ -27,11 +26,13 @@ const SearchBar = styled('div')`
 	align-items: center;
 	justify-content: space-between;
 	border: 1px solid lightgrey;
-	border-radius: 30px;
-	padding: 10px;
+	border-radius: 40px;
 	box-shadow: 2px 2px 5px lightgrey;
 	width: 80%;
 	margin-top: 25px;
+	height: 75px;
+	padding-left: 30px;
+	padding-right: 15px;
 `
 
 const LinkAndSpan = styled('div')`
@@ -39,7 +40,7 @@ const LinkAndSpan = styled('div')`
 `
 
 const Separator = styled('div')`
-	height: 20px;
+	height: 40px;
 	width: 1px;
 	margin-left: 5px;
 	margin-right: 5px;
@@ -51,10 +52,17 @@ const TopHeader = styled('div')`
 	justify-content: space-between;
 	width: 100%;
 	align-items: center;
+	padding: 20px;
+`
+
+const MenuText = styled('div')`
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	margin-left: 5px;
 `
 
 const IconContainer = styled('div')`
-	margin-left: 10px;
 	background: #ff385c;
 	display: flex;
 	align-items: center;
@@ -62,8 +70,8 @@ const IconContainer = styled('div')`
 	border-radius: 50%;
 	rotate: 180deg;
 	padding: 5px;
-	height: 30px;
-	width: 30px;
+	height: 50px;
+	width: 50px;
 	svg {
 		height: 17px;
 		width: 17px;
@@ -108,14 +116,20 @@ const YourHomeText = styled('div')`
 	margin-right: 30px;
 `
 
+const SearchInput = styled('input')`
+	border: none;
+`
+
 const CenterSwitch = styled('div')`
 	margin-left: 225px;
 	display: flex;
 `
 
 const SepAndText = styled('div')`
-	margin-right: 30px;
 	display: flex;
+	border-radius: 40px;
+	height: 75px;
+	align-items: center;
 `
 
 const LeftSwitch = styled('div')`
@@ -133,9 +147,25 @@ const RightSwitch = styled('div')`
 	cursor: pointer;
 `
 
+const PrimeSeparator = styled('div')`
+	width: 100%;
+	margin-top: 30px;
+	height: 1px;
+	background: lightgrey;
+`
+
+const LowerHeader = styled('div')`
+	width: 100%;
+	margin-top: 30px;
+	height: 1px;
+	background: lightgrey;
+`
+
 const HomePage = () => {
 	const [leftSwitchSel, setLeftSwitchSel] = useState(true)
 	const [userDropdown, setUserDropdown] = useState(false)
+
+	console.log(userDropdown)
 
 	const CustomToggle = React.forwardRef(({ children, onClick }, ref) => (
 		<div
@@ -203,16 +233,24 @@ const HomePage = () => {
 		</TopHeader>
 		<SearchBar>
 			<SepAndText>
-				<Separator />
-				<div>Check in</div>
+				<MenuText>
+					<div>Where</div>
+					<SearchInput placeholder='Search Destinations' />
+				</MenuText>
 			</SepAndText>
 			<SepAndText>
 				<Separator />
-				<div>Check in</div>
+				<MenuText>
+					<div>Date</div>
+					<SearchInput placeholder='Add dates' />
+				</MenuText>
 			</SepAndText>
 			<SepAndText>
 				<Separator />
-				<div>Check in</div>
+				<MenuText>
+					<div>Who</div>
+					<SearchInput placeholder='Add guests' />
+				</MenuText>
 			</SepAndText>
 			<IconContainer>
 				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={4} stroke="white" className="mag-glass">
@@ -220,6 +258,9 @@ const HomePage = () => {
 				</svg>
 			</IconContainer>
 		</SearchBar>
+		<PrimeSeparator />
+		<LowerHeader>
+		</LowerHeader>
 	</Header>
 }
 
